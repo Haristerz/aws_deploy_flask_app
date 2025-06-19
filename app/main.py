@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Hello from Flask running on AWS EKS!"
+    return "Hello from Flask running on AWS EKS! updated by Hari
 
 
 if __name__ == '__main__':
