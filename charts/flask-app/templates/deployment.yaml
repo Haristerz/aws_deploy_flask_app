@@ -1,25 +1,15 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
   name: {{ include "flask-app.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    app: {{ include "flask-app.name" . }}
-    env: {{ .Values.env }}
+    {{- include "flask-app.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  type: {{ .Values.service.type }}
   selector:
-    matchLabels:
-      app: {{ include "flask-app.name" . }}
-  template:
-    metadata:
-      labels:
-        app: {{ include "flask-app.name" . }}
-        env: {{ .Values.env }}
-    spec:
-      containers:
-        - name: {{ include "flask-app.name" . }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - containerPort: 5000
+    app: {{ include "flask-app.name" . }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}

@@ -4,8 +4,7 @@ metadata:
   name: {{ include "flask-app.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    app: {{ include "flask-app.name" . }}
-    env: {{ .Values.env }}
+    {{- include "flask-app.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   selector:
