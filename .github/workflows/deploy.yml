@@ -22,6 +22,7 @@ jobs:
       AWS_REGION: ${{ secrets.AWS_REGION }}
       ECR_REPO_NAME: ${{ secrets.ECR_REPO_NAME }}
       ENV: ${{ github.event.inputs.environment }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout source code
