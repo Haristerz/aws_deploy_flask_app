@@ -54,6 +54,6 @@ jobs:
           helm upgrade --install flask-${{ env.ENV }} ./charts/flask-app \
             --namespace ${{ env.ENV }} \
             --create-namespace \
-            -f charts/flask-app/values-${{ env.ENV }}.yaml \
+            -f charts/flask-app/values_${{ env.ENV }}.yaml \
             --set image.repository=${{ secrets.ECR_REPO_URL }} \
             --set image.tag=${{ github.sha }}
