@@ -54,5 +54,5 @@ jobs:
             --namespace ${{ env.ENV }} \
             --create-namespace \
             -f charts/flask-app/values-${{ env.ENV }}.yaml \
-            --set image.repository=${{ secrets.ECR_URI }} \
+            --set image.repository=${{ secrets.ECR_REPO_URL }} \
             --set image.tag=${{ github.sha }}
