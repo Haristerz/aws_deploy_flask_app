@@ -11,7 +11,7 @@ jobs:
 
     env:
       AWS_REGION: ${{ secrets.AWS_REGION }}
-      ECR_REPO_NAME: ${{ secrets.ECR_REPO_NAME }}
+      ECR_REPO_URL: ${{ secrets.ECR_REPO_URL }}
 
     steps:
       - name: Checkout source code
@@ -30,8 +30,10 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build and push image to ECR
+      - name: Build and push Docker image to ECR
         run: |
-          IMAGE_URI=${{ secrets.ECR_URI }}:${{ github.sha }}
+          IMAGE_TAG=${{ github.sha }}
+          IMAGE_URI=${{ env.ECR_REPO_URL }}:$IMAGE_TAG
+          echo "🚀 Building image: $IMAGE_URI"
           docker build -t $IMAGE_URI .
           docker push $IMAGE_URI
