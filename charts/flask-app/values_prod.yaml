@@ -1,0 +1,12 @@
+replicaCount: 2
+
+image:
+  repository: 490874679926.dkr.ecr.us-east-1.amazonaws.com/flask-app
+  tag: "prod"
+  pullPolicy: Always
+
+service:
+  type: LoadBalancer
+  port: 5000
+
+env: "prod"

@@ -1,7 +1,6 @@
 apiVersion: v2
 name: flask-app
-description: A Helm chart for deploying a Flask application to Kubernetes
-
+description: A Helm chart for Flask App on Kubernetes
 type: application
-version: 0.1.0            # Chart version
-appVersion: "1.0.0"       # Version of the actual app (your Flask app)
+version: 0.1.0
+appVersion: "1.0"
