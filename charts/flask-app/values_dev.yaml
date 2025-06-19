@@ -10,3 +10,8 @@ service:
   port: 5000
 
 env: "dev"
+
+serviceAccount:
+  create: true
+  name: ""
+
